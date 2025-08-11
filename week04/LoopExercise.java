@@ -1,5 +1,3 @@
-import java.util..scanner;
-
 class LoopExercise
 public static void main(String[] args) {
     Scanner = myObj = new scanner(System.in);
@@ -8,7 +6,7 @@ public static void main(String[] args) {
 
     int n = 5;
     int a = 4;
-    
+
     // Numerical input
     int Name = myObj.nextInt();
     int Age = myObj.nextInt();
