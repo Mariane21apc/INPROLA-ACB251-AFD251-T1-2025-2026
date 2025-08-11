@@ -1,23 +1,25 @@
-class LoopExercise{ 
-public static void main(String[] args) {
-    Scanner = myObj = new scanner(System.in);
+import java.util.Scanner;
 
-    System.out.println("Enter two value:");
+public class LoopExercise {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-    int n = 5;
-    int a = 4;
+        // Ask for start and end numbers
+        System.out.print("Enter the starting number: ");
+        int start = scanner.nextInt();
 
-    // Numerical input
-    int Name = myObj.nextInt();
-    int Age = myObj.nextInt();
+        System.out.print("Enter the ending number: ");
+        int end = scanner.nextInt();
 
-     // Output input by user
-    System.out.println("Name: " + a);
-    System.out.println("Age: " + b);
+        System.out.println("Even numbers between " + start + " and " + end + ":");
 
-     // for loop  
-    for (int i = 1; i <= n; ++i) {
-      System.out.println("Java is fun"+" from: "+i+ " to: "+n);
+        // For loop to find even numbers
+        for (int i = start; i <= end; i++) {
+            if (i % 2 == 0) {
+                System.out.println(i);
+            }
+        }
+
+        scanner.close();
     }
-  }
 }
