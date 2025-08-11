@@ -18,5 +18,6 @@ public static void main(String[] args) {
      // for loop  
     for (int i = 1; i <= n; ++i) {
       System.out.println("Java is fun"+" from: "+i+ " to: "+n);
+    }
   }
 }
