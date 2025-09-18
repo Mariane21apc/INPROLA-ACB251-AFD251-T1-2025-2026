@@ -5,9 +5,9 @@ public class Timer {
         Scanner input = new Scanner(System.in);
  
         // Input minutes and seconds
-        System.out.print("Enter minutes: ");
+        System.out.println("Enter minutes: ");
         int minutes = input.nextInt();
-        System.out.print("Enter seconds: ");
+        System.out.println("Enter seconds: ");
         int seconds = input.nextInt();
  
         // Store time in 2D array [ [minutes, seconds] ]
