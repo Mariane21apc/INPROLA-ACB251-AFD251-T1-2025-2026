@@ -30,4 +30,5 @@ public class Calculator implements SampleCalculator {
         calc.multiply(12); 
         System.out.println("Multiply result:"+ calc.product); 
         calc.divide(12); System.out.println("Divide result:"+ calc.quotient); 
-        
+    }
+}
