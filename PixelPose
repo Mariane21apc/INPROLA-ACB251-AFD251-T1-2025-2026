@@ -1,0 +1,87 @@
+from flask import Flask, render_template, request, redirect, url_for, send_file
+from PIL import Image
+from collections import deque
+
+app = Flask(__name__)
+
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        return self.items.pop() if not self.is_empty() else None
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+class Queue:
+    def __init__(self):
+        self.items = deque()
+
+    def enqueue(self, item):
+        self.items.append(item)
+
+    def dequeue(self):
+        return self.items.popleft() if not self.is_empty() else None
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+users = []
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        if validate_account(email, password):
+            users.append({'email': email, 'password': password})
+            return redirect(url_for('start'))
+    return render_template('signup.html')
+
+@app.route('/start')
+def start():
+    return render_template('start.html')
+
+@app.route('/photobooth', methods=['GET', 'POST'])
+def photobooth():
+    if request.method == 'POST':
+        poses = int(request.form['poses'])
+        stickers = request.form.getlist('stickers')
+        layout = request.form['layout']
+
+        create_photobooth_image(poses, stickers, layout)
+        return redirect(url_for('download'))
+
+    return render_template('photobooth.html')
+
+def create_photobooth_image(poses, stickers, layout):
+    images = []
+    
+    for _ in range(poses):
+        img = Image.new('RGB', (800, 600), color='white')
+        images.append(img)
+
+    # Implement the logic for adding stickers and layouts here
+    # Placeholder for merging images, adding stickers, etc.
+    
+    final_image = Image.new('RGB', (800, 600), color='pink')  # Example layout color
+    final_image.save('final_image.png')
+
+@app.route('/download')
+def download():
+    return send_file('final_image.png', as_attachment=True)
+
+def validate_account(email, password):
+    # Placeholder function for account validation
+    return True  # Implement actual validation logic here
+
+if __name__ == '__main__':
+    app.run(debug=True)
